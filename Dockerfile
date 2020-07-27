@@ -1,9 +1,11 @@
 FROM centos
 RUN yum install sudo -y 
 RUN yum install java -y 
+RUN yum install git -y 
 RUN yum install openssh-server -y 
-RUN /usr/sbin/sshd -D & 
 RUN ssh-keygen -A 
+RUN /usr/sbin/sshd -D && /bin/bash
+CMD setenforce 0
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl 
 RUN chmod +x ./kubectl 
 RUN mkdir /root/.kube /root/jenkins 
