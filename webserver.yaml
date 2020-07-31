@@ -19,13 +19,3 @@ spec:
       containers:
       - image: httpd
         name: webserver
-        ports:
-        - containerPort: 8000
-          name: webserver
-        volumeMounts:
-        - name: webserver-vol
-          mountPath: /usr/local/apache2/htdocs/
-      volumes:
-        - name: webserver-vol
-          persistentVolumeClaim:
-            claimName: webserver-vol
